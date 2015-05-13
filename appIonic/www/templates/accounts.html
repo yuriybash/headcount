@@ -1,0 +1,35 @@
+<ion-view view-title="Accounts">
+  <ion-content>
+    <section class="venmo-button">
+      <button ng-show="!shouldNotBeClickable" ng-disabled="true">Venmo Account Authorized</button>
+      <button ng-show="shouldNotBeClickable" ng-click="authorize()">Authorize Your Venmo Account!</button>
+    </section>
+    <form ng-submit="accountUpdate()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" ng-model="username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">First Name</span>
+          <input type="text" ng-model="firstname">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Last Name</span>
+          <input type="text" ng-model="lastname">
+        </label>
+        <label class="item item-input">
+          <span class="input item-input">Phone Number</span>
+          <input ng-model="telephone" type="tel" pattern="[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}">
+        </label>
+        <label class="item item-input">
+          <span class="input item-input">Email (required)</span>
+           <input ng-model="email" type="email" ng-required="true">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Save</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

@@ -9,8 +9,6 @@ angular.module('headcount', [
   'headcount.events',
   'headcount.accounts',
   'headcount.auth',
-  'ngRoute',
-  'ngMaterial',
   'ui.bootstrap'
 ])
 .config(function($stateProvider){
