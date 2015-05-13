@@ -1,0 +1,25 @@
+<ion-view title="Events">
+
+    <div class="bar bar-subheader item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-android-search placeholder-icon"></i>
+            <input id="searchKey" type="search" placeholder="Search events" ng-model="search" autocorrect="off" >
+         </label>
+    </div>
+
+    <ion-content class="has-header has-subheader">
+        <ion-list>
+            <ion-item ng-repeat="event in events | filter:search" type="item-text-wrap" class="item-avatar" ng-click="saveEvent()">
+                <img src="link.image" width="100px" height="100px/>
+                <div id="{{ 'event-' + $index }}" class="info" >
+                  <span> <strong> {{ link.title }} </strong> </span> <br />
+                  <span> Expiration: {{ link.expiration |  date : format : timezone}} </span> <br />
+                  <span> People needed: {{ link.thresholdPeople - link.committedPeople }} </span>
+                </div>
+                <span> Cost per person: ${{ link.thresholdMoney / link.thresholdPeople | number:2 }} </span> <br />
+                <span> Remaining money needed: ${{ link.thresholdMoney - (link.committedPeople * (link.thresholdMoney / link.thresholdPeople)) | number:2}} </span>ß
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+</ion-view>
