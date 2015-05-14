@@ -257,7 +257,7 @@ router.post('/events-create', function(req, res) {
 router.post('/authorize', function(req, res) {
 
   var username = req.body.username;
-  var clientId = '2612';
+  var clientId = '2626';
   var scopes = 'make_payments%20access_feed%20access_profile%20access_email%20access_phoneaccess_balance%20access_friends';
 
   var redirect_uri = !process.env.DATABASE_URL ? 'http://localhost:5000/oauth' :
@@ -265,7 +265,7 @@ router.post('/authorize', function(req, res) {
   'http://www.theheadcount.com/oauth';
 
   var authorize = 'https://api.venmo.com/v1/oauth/authorize?client_id=' + clientId + '&scope=' + scopes + '&response_type=code' + '&state=' + username + '&redirect_uri=' + redirect_uri;
-
+  console.log('AUTHORIZE URL: ', authorize);
   res.send(authorize);
 });
 
