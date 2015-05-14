@@ -10,14 +10,14 @@
     <ion-content class="has-header has-subheader">
         <ion-list>
             <ion-item ng-repeat="event in events | filter:search" type="item-text-wrap" class="item-avatar" ng-click="saveEvent()">
-                <img ng-src="link.image" width="100px" height="100px"/>
+                <img ng-src="{{ event.image }}" width="100px" height="100px"/>
                 <div id="{{ 'event-' + $index }}" class="info" >
-                  <span> <strong> {{ link.title }} </strong> </span> <br />
-                  <span> Expiration: {{ link.expiration |  date : format : timezone}} </span> <br />
-                  <span> People needed: {{ link.thresholdPeople - link.committedPeople }} </span>
+                  <span> <strong> {{ event.title }} </strong> </span> <br />
+                  <span> Expiration: {{ event.expiration |  date : format : timezone}} </span> <br />
+                  <span> People needed: {{ event.thresholdPeople - event.committedPeople }} </span>
                 </div>
-                <span> Cost per person: ${{ link.thresholdMoney / link.thresholdPeople | number:2 }} </span> <br />
-                <span> Remaining money needed: ${{ link.thresholdMoney - (link.committedPeople * (link.thresholdMoney / link.thresholdPeople)) | number:2}} </span>
+                <span> Cost per person: ${{ event.thresholdMoney / event.thresholdPeople | number:2 }} </span> <br />
+                <span> Remaining money needed: ${{ event.thresholdMoney - (event.committedPeople * (event.thresholdMoney / event.thresholdPeople)) | number:2}} </span>
             </ion-item>
         </ion-list>
     </ion-content>
