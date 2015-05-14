@@ -1,10 +1,8 @@
 <ion-view view-title="Accounts">
   <ion-content>
     <!-- <section class="venmo-button"> -->
-    <label class="item">
-      
-      <button class="button button-block button-positive" ng-show="!shouldNotBeClickable" ng-disabled="true">Venmo Account Authorized</button>
-      <button class="button button-block button-positive" ng-show="shouldNotBeClickable" ng-click="authorize()">Authorize Your Venmo Account!</button>
+    <label class="item" ng-show="shouldNotBeClickable">
+      <button class="button button-block button-positive" ng-click="authorize()">Authorize Your Venmo Account!</button>
     </label>
     <!-- </section> -->
     <form ng-submit="accountUpdate()">

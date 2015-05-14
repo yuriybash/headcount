@@ -12,7 +12,7 @@ angular.module('headcount', [
   'headcount.auth',
   
 ])
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, Auth, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -23,6 +23,18 @@ angular.module('headcount', [
       StatusBar.styleDefault();
     }
   })
+  $rootScope.$on('$stateChangeStart', function (evt, toState, fromState) {
+
+    if (toState.authenticate && !Auth.isAuth()) {
+
+    // if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
+
+
+      console.log('ICHECKED!');
+      evt.preventDefault();
+      $state.go('signin');
+    }
+  });
 })
 .config(function($stateProvider, $urlRouterProvider){
   $stateProvider
@@ -35,7 +47,8 @@ angular.module('headcount', [
     .state('signin', {
       url: '/signin',  
       templateUrl: '../templates/signin.html',
-      controller: 'AuthController'
+      controller: 'AuthController',
+      authenticate: false
     })
     .state('signup', {
       url: '/signup',
@@ -48,39 +61,39 @@ angular.module('headcount', [
         'menuContent': {
           templateUrl: '../templates/event.html',
           controller: 'eventsController'
-          // authenticate: true
         }
-      }
+      },
+      authenticate: true,
     })
     .state('app.events', {
       url: '/events',
       views: {
         'menuContent': {
           templateUrl: '../templates/eventslist.html',
-          controller: 'EventsController',
-          // authenticate: true          
+          controller: 'EventsController'
         }
-      }
+      },
+      authenticate: true
     })
     .state('app.newevent', {
       url: '/newevent',
       views: {
         'menuContent': {
           templateUrl: '../templates/newevent.html',
-          controller: 'EventsController',
-          // authenticate: true          
+          controller: 'EventsController'
         }
-      }
+      },
+      authenticate: true          
     })
     .state('app.accounts', {
       url: '/accounts',
       views: {
         'menuContent': {
           templateUrl: '../templates/accounts.html',
-          controller: 'AccountsController',
-          // authenticate: true          
+          controller: 'AccountsController'
         }
-      }
+      },
+      authenticate: true          
     });
     
     $urlRouterProvider.otherwise('/app/events');

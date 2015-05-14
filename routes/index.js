@@ -276,8 +276,8 @@ router.post('/authorize', function(req, res) {
  */
 router.get('/oauth', function(req, res) {
   var venmoTokenUri = 'https://api.venmo.com/v1/oauth/access_token';
-  var clientId = '2612';
-  var clientSecret = 'eUv3N6JDsM3YCGkzmF8Lg8kH9WtV6kuf';
+  var clientId = '2626';
+  var clientSecret = 'V2HZcku3zgTKfwGHeR79YvkLXnpwn6mT';
   var username = req.query.state;
   var code = req.query.code;
 
