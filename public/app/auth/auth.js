@@ -1,4 +1,4 @@
-angular.module('headcount.auth', [])
+åangular.module('headcount.auth', [])
 
 .controller('AuthController', function ($scope, $window, $location, $http, Auth) {
 
