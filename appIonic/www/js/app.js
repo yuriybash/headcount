@@ -12,7 +12,7 @@ angular.module('headcount', [
   'headcount.auth',
   
 ])
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -23,6 +23,11 @@ angular.module('headcount', [
       StatusBar.styleDefault();
     }
   })
+  $rootScope.$on('$stateChangeStart', function (evt, next, current) {
+    if (next.$$state && next.$$state.authenticate && !Auth.isAuth()) {
+      $location.path('/signin');
+    }
+  });
 })
 .config(function($stateProvider, $urlRouterProvider){
   $stateProvider
@@ -58,7 +63,7 @@ angular.module('headcount', [
         'menuContent': {
           templateUrl: '../templates/eventslist.html',
           controller: 'EventsController',
-          // authenticate: true          
+          authenticate: true
         }
       }
     })
