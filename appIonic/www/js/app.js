@@ -5,58 +5,13 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('headcount', [
   'ionic',
+  'headcount.AppController',
   'headcount.services',
   'headcount.events',
   'headcount.accounts',
   'headcount.auth',
-  'ui.bootstrap'
+  
 ])
-.config(function($stateProvider){
-  $stateProvider
-    .state('signin', {
-      url: '/signin',
-      templateUrl: '../templates/signin.html',
-      controller: 'AuthController'
-    })
-    .state('signup', {
-      url: '/signup',
-      templateUrl: '../templates/signup.html',
-      controller: 'AuthController'
-    })
-    .state('event', {
-      url: '/event',
-      templateUrl: '../templates/event.html',
-      controller: 'eventsController',
-      authenticate: true
-    })
-    .state('events', {
-      url: '/events',
-      templateUrl: '../templates/eventslist.html',
-      controller: 'EventsController',
-      authenticate: true
-    })
-    .state('newevent', {
-      url: '/newevent',
-      templateUrl: '../templates/newevent.html',
-      controller: 'EventsController',
-      authenticate: true
-    })
-    .state('accounts', {
-      url: '/accounts',
-      templateUrl: '../templates/accounts.html',
-      controller: 'AccountsController',
-      authenticate: true
-    })
-    .otherwise({
-      redirectTo: '/events'
-    });
-})
-.factory('EventsFactory', function ($rootScope) {
-
-})
-.factory('AttachTokens', function ($window, $location) {
-
-})
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -67,5 +22,93 @@ angular.module('headcount', [
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-  });
+  })
+})
+.config(function($stateProvider, $urlRouterProvider){
+  $stateProvider
+  // adds menu
+    .state('app', {
+      url: '/app',    
+      templateUrl: '../templates/app.html',
+      controller: 'AppController'
+    })    
+    .state('signin', {
+      url: '/signin',  
+      templateUrl: '../templates/signin.html',
+      controller: 'AuthController'
+    })
+    .state('signup', {
+      url: '/signup',
+      templateUrl: '../templates/signup.html',
+      controller: 'AuthController'
+    })
+    .state('app.event', {
+      url: '/event',
+      views: {
+        'menuContent': {
+          templateUrl: '../templates/event.html',
+          controller: 'eventsController'
+          // authenticate: true
+        }
+      }
+    })
+    .state('app.events', {
+      url: '/events',
+      views: {
+        'menuContent': {
+          templateUrl: '../templates/eventslist.html',
+          controller: 'EventsController',
+          // authenticate: true          
+        }
+      }
+    })
+    .state('app.newevent', {
+      url: '/newevent',
+      views: {
+        'menuContent': {
+          templateUrl: '../templates/newevent.html',
+          controller: 'EventsController',
+          // authenticate: true          
+        }
+      }
+    })
+    .state('app.accounts', {
+      url: '/accounts',
+      views: {
+        'menuContent': {
+          templateUrl: '../templates/accounts.html',
+          controller: 'AccountsController',
+          // authenticate: true          
+        }
+      }
+    });
+    
+    $urlRouterProvider.otherwise('/app/events');
+})
+.factory('EventsFactory', function ($rootScope) {
+  var eventServices = {};
+
+  eventServices.shouldNotBeCreatable = false;
+  eventServices.shouldNotBeClickable = false;
+
+  eventServices.currentEvent = {};
+  return eventServices;
+})
+.factory('AttachTokens', function ($window, $location) {
+  // this is an $httpInterceptor
+  // its job is to stop all out going request
+  // then look in local storage and find the user's token
+  // then add it to the header so the server can validate the request
+  // TODO: Make this more secure, use passport or bcrypt.
+  var attach = {
+    request: function (object) {
+      var username = $window.sessionStorage.getItem('user');
+      if (username) {
+        object.headers['x-access-token'] = username;
+      }
+      object.headers['Allow-Control-Allow-Origin'] = '*';
+      return object;
+    }
+  };
+  return attach;
 })
