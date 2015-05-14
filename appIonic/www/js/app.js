@@ -10,6 +10,7 @@ angular.module('headcount', [
   'headcount.events',
   'headcount.accounts',
   'headcount.auth',
+  'ngMaterial',
 ])
 .run(function($ionicPlatform, $rootScope, Auth, $state) {
   $ionicPlatform.ready(function() {
@@ -26,8 +27,6 @@ angular.module('headcount', [
   $rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
 
     if (toState && toState.authenticate && !Auth.isAuth()) {
-      // console.log('ICHECKED!');
-      // e.preventDefault();
       setTimeout(function(){
         $state.go('signin');
       });
@@ -35,7 +34,7 @@ angular.module('headcount', [
     }
   });
 })
-.config(function($stateProvider, $urlRouterProvider){
+.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider){
   $stateProvider
   // adds menu
     .state('app', {
