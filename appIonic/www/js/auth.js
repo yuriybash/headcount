@@ -15,6 +15,13 @@ angular.module('headcount.auth', [])
    * it sets the session item 'user' to the username, so that we can render the content
    * specifically to the user that's currently signed in.
    */
+  $scope.signupNav = function() {
+    $window.location.href = "#/signup";
+  }
+
+  $scope.signinNav = function() {
+    $window.location.href = "#/signin";
+  }
 
   $scope.signin = function () {
 
