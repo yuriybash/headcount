@@ -39,13 +39,15 @@ router.post('/checkUser', function(req, res, done) {
     .then(function(user){
 
       // console.log('current invites', user.related('invites').models);
-      var inviteModels = user.related('invites').models;
+      if (user) {
+        var inviteModels = user.related('invites').models;
 
-      var currentInvites = [];
-      for (var i = 0; i < inviteModels.length; i++) {
+        var currentInvites = [];
+        for (var i = 0; i < inviteModels.length; i++) {
 
-        if (inviteModels[i].attributes.joined || inviteModels[i].attributes.declined) {
-          currentInvites.push(inviteModels[i].attributes.event_id)
+          if (inviteModels[i].attributes.joined || inviteModels[i].attributes.declined) {
+            currentInvites.push(inviteModels[i].attributes.event_id)
+          }
         }
       }
 
