@@ -10,7 +10,6 @@ angular.module('headcount', [
   'headcount.events',
   'headcount.accounts',
   'headcount.auth',
-  
 ])
 .run(function($ionicPlatform, $rootScope, Auth, $state) {
   $ionicPlatform.ready(function() {
@@ -22,17 +21,17 @@ angular.module('headcount', [
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-  })
-  $rootScope.$on('$stateChangeStart', function (evt, toState, fromState) {
+  });
 
-    if (toState.authenticate && !Auth.isAuth()) {
+  $rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
 
-    // if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
+    if (toState && toState.authenticate && !Auth.isAuth()) {
+      // console.log('ICHECKED!');
+      // e.preventDefault();
+      setTimeout(function(){
+        $state.go('signin');
+      });
 
-
-      console.log('ICHECKED!');
-      evt.preventDefault();
-      $state.go('signin');
     }
   });
 })
