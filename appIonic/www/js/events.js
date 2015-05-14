@@ -46,13 +46,7 @@ $scope.user = {
 
   // Event object that's populated via creation form and then posted for creation
   $scope.newEvent = {
-    title: 'Title goes here',
-    description: 'Description goes here',
-    expiration: new Date(new Date().setDate(new Date().getDate() + 20)),
-    thresholdPeople: 10,
-    thresholdMoney: 100
   };
-
   // Checks to see if there's currently a clicked event, if not, it sends them back to the events list
 
   // $scope.checkEventClick = function() {
@@ -170,6 +164,7 @@ $scope.user = {
    * Creates an event with $scope.newEvent data
    */
   $scope.createEvent = function() {
+    console.log('EVENT DATA', $scope.newEvent);
     var inv = [];
     var list = $('.selected .compact');
     for (var i = 0; i < list.length; i++){
