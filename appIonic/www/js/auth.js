@@ -71,7 +71,7 @@ angular.module('headcount.auth', [])
       url: '/auth/logout'
     })
     .then(function(resp) {
-      $window.alert("You've signed out!");
+      $window.alert("You've signed up for all of the things!!");
     });
   };
 
