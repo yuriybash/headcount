@@ -40,7 +40,6 @@ router.post('/checkUser', function(req, res, done) {
 
      if (user) {
       // console.log('current invites', user.related('invites').models);
-      if (user) {
         var inviteModels = user.related('invites').models;
 
         var currentInvites = [];
@@ -50,11 +49,9 @@ router.post('/checkUser', function(req, res, done) {
             currentInvites.push(inviteModels[i].attributes.event_id)
           }
         }
-      }
+      }      
 
-      // console.log(currentInvites);
-      
-
+      if (user) {
 
        if (user.attributes.venmoAccessToken && user.attributes.venmoUserId) {
          res.json({
