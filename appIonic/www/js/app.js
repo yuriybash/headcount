@@ -95,9 +95,9 @@ angular.module('headcount', [
       authenticate: true          
     });
 
-    // $mdThemingProvider.theme('default')
-    //   .primaryPalette('blue')
-    //   .accentPalette('red');
+    $mdThemingProvider.theme('default')
+      .primaryPalette('blue')
+      .accentPalette('red');
     
     
 
