@@ -27,7 +27,7 @@ angular.module('headcount.auth', [])
 
     return $http({
       method: 'POST',
-      url: '/auth/local',
+      url: 'http://young-tundra-9275.herokuapp.com/auth/local',
       data: $scope.user
     })
     .then(function (resp) {
@@ -43,7 +43,7 @@ angular.module('headcount.auth', [])
 
     return $http({
       method: 'POST',
-      url: '/auth/local-signup',
+      url: 'http://young-tundra-9275.herokuapp.com/auth/local-signup',
       data: $scope.user
     })
     .then(function (resp) {
@@ -68,7 +68,7 @@ angular.module('headcount.auth', [])
     Auth.signout();
     return $http({
       method: 'GET',
-      url: '/auth/logout'
+      url: 'http://young-tundra-9275.herokuapp.com/auth/logout'
     })
     .then(function(resp) {
       $window.alert("You've signed up for all of the things!!");
