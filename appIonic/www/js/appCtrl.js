@@ -7,7 +7,7 @@ angular.module('headcount.AppController', [])
     Auth.signout();
     return $http({
       method: 'GET',
-      url: '/auth/logout'
+      url: 'http://young-tundra-9275.herokuapp.com/auth/logout'
     })
     .then(function(resp) {
       console.log("You've signed out!");

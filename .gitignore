@@ -37,3 +37,7 @@ Procfile
 
 # ignore database keys
 db_keys.js
+
+# ignores appIonic Lib
+appIonic/www/lib
+

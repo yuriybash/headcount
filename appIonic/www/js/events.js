@@ -61,7 +61,7 @@ $scope.user = {
   $scope.fetchEvents = function () {
     return $http({
       method: 'GET',
-      url: '/events-fetch'
+      url: 'http://young-tundra-9275.herokuapp.com/events-fetch'
     })
     .then(function(resp) {
       if (resp.data.length >= 1) {
@@ -81,7 +81,7 @@ $scope.user = {
   $scope.fetchInviteIDs = function () {
     return $http({
       method: 'GET',
-      url: '/invite-events-fetch'
+      url: 'http://young-tundra-9275.herokuapp.com/invite-events-fetch'
     })
     .then(function(resp) {
       $scope.fetchInviteEvents(resp.data);
@@ -91,7 +91,7 @@ $scope.user = {
   $scope.fetchInviteEvents = function (ids) {
     return $http({
       method: 'POST',
-      url: '/invite-events-fetch',
+      url: 'http://young-tundra-9275.herokuapp.com/invite-events-fetch',
       data: {ids: ids}
     })
     .then(function(resp) {
@@ -110,7 +110,7 @@ $scope.user = {
   $scope.fetchUsers = function () {
     return $http({
       method: 'GET',
-      url: '/users-fetch'
+      url: 'http://young-tundra-9275.herokuapp.com/users-fetch'
     })
     .then(function(resp) {
       $scope.userList = resp.data;
@@ -176,7 +176,7 @@ $scope.user = {
     // console.log('Event details', $scope.newEvent);
     return $http({
       method: 'POST',
-      url: '/events-create',
+      url: 'http://young-tundra-9275.herokuapp.com/events-create',
       data: $scope.newEvent
     })
     .then(function(resp) {
@@ -190,7 +190,7 @@ $scope.user = {
     var eventId = this.event.id;
     return $http({
       method: 'POST',
-      url: '/invite-response',
+      url: 'http://young-tundra-9275.herokuapp.com/invite-response',
       data: {
         eventId: eventId,
         accepted: acceptOrDeclineBoolean
@@ -229,7 +229,7 @@ $scope.user = {
     var currentUser = sessionStorage.getItem('user');
     return $http({
       method: 'POST',
-      url : '/users/checkUser',
+      url : 'http://young-tundra-9275.herokuapp.com/users/checkUser',
       data : {'username': currentUser}
     })
     .then(function(resp){
