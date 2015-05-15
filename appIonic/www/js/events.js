@@ -45,8 +45,7 @@ $scope.user = {
   };
 
   // Event object that's populated via creation form and then posted for creation
-  $scope.newEvent = {
-  };
+  $scope.newEvent = {};
   // Checks to see if there's currently a clicked event, if not, it sends them back to the events list
 
   // $scope.checkEventClick = function() {
