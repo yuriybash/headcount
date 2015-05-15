@@ -31,7 +31,7 @@ db.knex.schema.hasTable('users').then(function(exists) {
       user.string('phoneNumber', 100);
       user.timestamps();
     }).then(function (table) {
-      console.log('Created Table', table);
+      console.log('Created Users Table', table);
     });
   }
 });
@@ -53,7 +53,7 @@ db.knex.schema.hasTable('events').then(function(exists) {
       event.boolean('paid');
       event.timestamps();
     }).then(function (table) {
-      console.log('Created Table', table);
+      console.log('Created Events Table', table);
     });
   }
 });
@@ -68,7 +68,7 @@ db.knex.schema.hasTable('invites').then(function(exists) {
       invite.boolean('declined');
       invite.timestamps();
     }).then(function (table) {
-      console.log('Created Table', table);
+      console.log('Created Invites Table', table);
     });
   }
 });
