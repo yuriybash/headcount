@@ -9,8 +9,8 @@ angular.module('headcount', [
   'headcount.services',
   'headcount.events',
   'headcount.accounts',
-  'headcount.auth',
-  'ngMaterial',
+  'headcount.auth'
+  // 'ngMaterial'
 ])
 .run(function($ionicPlatform, $rootScope, Auth, $state) {
   $ionicPlatform.ready(function() {
@@ -34,7 +34,7 @@ angular.module('headcount', [
     }
   });
 })
-.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider){
+.config(function($stateProvider, $urlRouterProvider){
   $stateProvider
   // adds menu
     .state('app', {
@@ -93,11 +93,11 @@ angular.module('headcount', [
       authenticate: true          
     });
 
-    $mdThemingProvider.theme('default')
-      .primaryPalette('blue')
-      .accentPalette('red');
+    // $mdThemingProvider.theme('default')
+    //   .primaryPalette('blue')
+    //   .accentPalette('red');
     
-    $urlRouterProvider.otherwise('/app/events');
+    $urlRouterProvider.otherwise('/signin');
 })
 .factory('EventsFactory', function ($rootScope) {
   var eventServices = {};
