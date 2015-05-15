@@ -9,8 +9,8 @@
 
     <ion-content class="has-header has-subheader">
         <ion-list>
-            <ion-item ng-repeat="event in events | filter:search" type="item-text-wrap" class="item-avatar" ng-click="saveEvent()">
-                <img ng-src="{{ event.image }}" width="100px" height="100px"/>
+            <ion-item ng-repeat="event in events | filter:search" type="item-text-wrap" class="item-avatar" ng-click="saveEvent(event)">
+                <img ng-src="{{ event.image }}" width="200px" height="200px"/>
                 <div id="{{ 'event-' + $index }}" class="info" >
                   <span> <strong> {{ event.title }} </strong> </span> <br />
                   <span> Expiration: {{ event.expiration |  date : format : timezone}} </span> <br />

@@ -41,7 +41,7 @@ $scope.user = {
   $scope.saveEvent = function(link) {
     $scope.showEvent = true;
     EventsFactory.currentEvent = link;
-
+    $window.location.href = "#/app/event";
   };
 
   // Event object that's populated via creation form and then posted for creation

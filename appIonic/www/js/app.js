@@ -58,7 +58,7 @@ angular.module('headcount', [
       views: {
         'menuContent': {
           templateUrl: '../templates/event.html',
-          controller: 'eventsController'
+          controller: 'EventsController'
         }
       },
       authenticate: true,
