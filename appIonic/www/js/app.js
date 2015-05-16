@@ -9,10 +9,10 @@ angular.module('headcount', [
   'headcount.services',
   'headcount.events',
   'headcount.accounts',
-  'headcount.auth'
-  // 'ngMaterial'
+  'headcount.auth',
+  'ngMaterial'
 ])
-.run(function($ionicPlatform, $rootScope, Auth, $state) {
+.run(function($ionicPlatform, $rootScope, Auth, $state ) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
