@@ -226,7 +226,7 @@ $scope.user = {
    */
   $scope.checkEventPermissions = function(){
 
-    var currentUser = sessionStorage.getItem('user');
+    var currentUser = localStorage.getItem('user');
     return $http({
       method: 'POST',
       url : 'https://young-tundra-9275.herokuapp.com/users/checkUser',

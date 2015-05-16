@@ -61,8 +61,8 @@ angular.module('headcount', [
           templateUrl: '../www/templates/event.html',
           controller: 'EventsController'
         }
-      }
-      // authenticate: true,
+      },
+      authenticate: true,
     })
     .state('app.events', {
       url: '/events',
@@ -71,8 +71,8 @@ angular.module('headcount', [
           templateUrl: '../www/templates/eventslist.html',
           controller: 'EventsController'
         }
-      }
-      // authenticate: true
+      },
+      authenticate: true
     })
     .state('app.newevent', {
       url: '/newevent',
@@ -101,7 +101,7 @@ angular.module('headcount', [
     
     
 
-    $urlRouterProvider.otherwise('/events');
+    $urlRouterProvider.otherwise('/signin');
 })
 .factory('EventsFactory', function ($rootScope) {
   var eventServices = {};
@@ -120,7 +120,7 @@ angular.module('headcount', [
   // TODO: Make this more secure, use passport or bcrypt.
   var attach = {
     request: function (object) {
-      var username = $window.sessionStorage.getItem('user');
+      var username = $window.localStorage.getItem('user');
       if (username) {
         object.headers['x-access-token'] = username;
       }

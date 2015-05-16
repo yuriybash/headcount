@@ -1,6 +1,6 @@
 angular.module('headcount.auth', [])
 
-.controller('AuthController', function ($scope, $window, $location, $http, Auth) {
+.controller('AuthController', function ($scope, $window, $location, $http, Auth, $state) {
 
   /**
    * $scope.user holds onto any input on the signin.html and signup.html input
@@ -36,13 +36,14 @@ angular.module('headcount.auth', [])
     })
     .then(function (resp) {
       
-      console.log("$window.sessionStorage: ", $window.sessionStorage);
+      console.log("$window.localStorage: ", $window.localStorage);
 
-      $window.sessionStorage.setItem('user', resp.config.data.username);
+      $window.localStorage.setItem('user', resp.config.data.username);
 
       console.log("$window.location: ", $window.location)
 
-      $window.location.href = "/";
+      $state.go('app.events');
+      // $window.location.href = "/";
 
     })
     .catch(function(error) {
@@ -63,8 +64,8 @@ angular.module('headcount.auth', [])
     .then(function (resp) {
         console.log("resp in auth signup: ", resp);
 
-        $window.sessionStorage.setItem('user', resp.config.data.username);
-        console.log("$window.sesstionStorage: ", $window.sessionStorage);
+        $window.localStorage.setItem('user', resp.config.data.username);
+        console.log("$window.sesstionStorage: ", $window.localStorage);
 
         $window.location.href = "/";
     })
