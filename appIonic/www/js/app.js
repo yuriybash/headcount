@@ -12,7 +12,7 @@ angular.module('headcount', [
   'headcount.auth',
   'ngMaterial'
 ])
-.run(function($ionicPlatform, $rootScope, Auth, $state ) {
+.run(function($ionicPlatform, $rootScope, Auth, $state, $mdThemingProvider) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
