@@ -3,8 +3,12 @@ angular.module('headcount.accounts', [])
 .controller('AccountsController', function ($scope, $window, $location, $http) {
 
   $scope.initialize = function() {
+<<<<<<< HEAD
     var currentUser = localStorage.getItem('user');
     console.log(currentUser);
+=======
+    var currentUser = sessionStorage.getItem('user');
+>>>>>>> implements material design
     return $http({
       method: 'POST',
       url: 'https://young-tundra-9275.herokuapp.com/users/accountinfo', //http://young-tundra-9275.herokuapp.com/users/accountinfo
@@ -23,8 +27,12 @@ angular.module('headcount.accounts', [])
   $scope.initialize();
 
   $scope.accountUpdate = function() {
+<<<<<<< HEAD
     console.log('updating account');
     var currentUser = localStorage.getItem('user');
+=======
+    var currentUser = sessionStorage.getItem('user');
+>>>>>>> implements material design
     var data = {};
     data.username = $scope.username;
     data.firstName = $scope.firstname;
@@ -36,13 +44,14 @@ angular.module('headcount.accounts', [])
       data: data
     })
     .then(function (resp) {
-      console.log('account updated');
+      $window.location.href = "#/app/events";
     });
   };
 
   /**
    * Checks if user has already authorized his/her Venmo account
    */
+<<<<<<< HEAD
   $scope.checkVenmoDetails = function(){
 
     var currentUser = localStorage.getItem('user');
@@ -84,5 +93,7 @@ angular.module('headcount.accounts', [])
       $window.location.href = resp.data;
     });
   };
+=======
+>>>>>>> implements material design
 
 });
