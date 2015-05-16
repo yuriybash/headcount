@@ -12,7 +12,7 @@ angular.module('headcount', [
   'headcount.auth',
   'ngMaterial'
 ])
-.run(function($ionicPlatform, $rootScope, Auth, $state, $mdThemingProvider) {
+.run(function($ionicPlatform, $rootScope, Auth, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -95,17 +95,17 @@ angular.module('headcount', [
       authenticate: true          
     });
 
-    $mdThemingProvider.theme('default')
-      .primaryPalette('blue', {
-        'default': '900',
-        'hue-1': '700',
-        'hue-2': '200',
-        'hue-3': 'A100'
-      })
-      .accentPalette('indigo', {
-        'default': '900'
-      })
-      .backgroundPalette('grey');
+    // $mdThemingProvider.theme('default')
+    //   .primaryPalette('blue', {
+    //     'default': '900',
+    //     'hue-1': '700',
+    //     'hue-2': '200',
+    //     'hue-3': 'A100'
+    //   })
+    //   .accentPalette('indigo', {
+    //     'default': '900'
+    //   })
+    //   .backgroundPalette('grey');
     
     
 
