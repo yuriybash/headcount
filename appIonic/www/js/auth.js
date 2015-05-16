@@ -16,11 +16,11 @@ angular.module('headcount.auth', [])
    * specifically to the user that's currently signed in.
    */
   $scope.signupNav = function() {
-    $window.location.href = "#/signup";
+   $state.go('signup');
   }
 
   $scope.signinNav = function() {
-    $window.location.href = "#/signin";
+    $state.go('signin');
   }
 
   $scope.signin = function () {
@@ -40,10 +40,8 @@ angular.module('headcount.auth', [])
 
       $window.localStorage.setItem('user', resp.config.data.username);
 
-      console.log("$window.location: ", $window.location)
-
       $state.go('app.events');
-      // $window.location.href = "/";
+      // $window.location.href = "/"; // for use when in web browser without Ionic
 
     })
     .catch(function(error) {
@@ -51,7 +49,7 @@ angular.module('headcount.auth', [])
 
       $window.alert("Incorrect login, please try again!");
     });
-  };  
+  };
 
   $scope.signup = function () {
 
@@ -67,7 +65,7 @@ angular.module('headcount.auth', [])
         $window.localStorage.setItem('user', resp.config.data.username);
         console.log("$window.sesstionStorage: ", $window.localStorage);
 
-        $window.location.href = "/";
+        $state.go('signin');
     })
     .catch(function(error) {
       console.log("error: ", error);
