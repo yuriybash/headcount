@@ -7,7 +7,7 @@ angular.module('headcount.accounts', [])
     console.log(currentUser);
     return $http({
       method: 'POST',
-      url: 'http://young-tundra-9275.herokuapp.com/users/accountinfo', //http://young-tundra-9275.herokuapp.com/users/accountinfo
+      url: 'https://young-tundra-9275.herokuapp.com/users/accountinfo', //http://young-tundra-9275.herokuapp.com/users/accountinfo
       data: {
         username: currentUser,
       }
@@ -32,7 +32,7 @@ angular.module('headcount.accounts', [])
     data.email = $scope.email;
     return $http({
       method: 'POST',
-      url: 'http://young-tundra-9275.herokuapp.com/users/accountupdate',
+      url: 'https://young-tundra-9275.herokuapp.com/users/accountupdate',
       data: data
     })
     .then(function (resp) {
@@ -48,7 +48,7 @@ angular.module('headcount.accounts', [])
     var currentUser = sessionStorage.getItem('user');
     return $http({
       method: 'POST',
-      url : 'http://young-tundra-9275.herokuapp.com/users/checkUser',
+      url : 'https://young-tundra-9275.herokuapp.com/users/checkUser',
       data : {'username': currentUser}
     })
     .then(function(resp){
@@ -74,7 +74,7 @@ angular.module('headcount.accounts', [])
 
     return $http({
       method: 'POST',
-      url: 'http://young-tundra-9275.herokuapp.com/authorize',
+      url: 'https://young-tundra-9275.herokuapp.com/authorize',
       data: {
         username: currentUser,
       }

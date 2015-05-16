@@ -16,9 +16,9 @@ angular.module('headcount', [
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
+    // if(window.cordova && window.cordova.plugins.Keyboard) {
+    //   cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    // }
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
@@ -39,44 +39,46 @@ angular.module('headcount', [
   // adds menu
     .state('app', {
       url: '/app',    
-      templateUrl: '../templates/app.html',
+      templateUrl: '../www/templates/app.html',
+      // for development on phone add www/ as beginning route path
+      // for development on web browser, take out www/
       controller: 'AppController'
     })    
     .state('signin', {
       url: '/signin',  
-      templateUrl: '../templates/signin.html',
+      templateUrl: '../www/templates/signin.html',
       controller: 'AuthController',
     })
     .state('signup', {
       url: '/signup',
-      templateUrl: '../templates/signup.html',
+      templateUrl: '../www/templates/signup.html',
       controller: 'AuthController'
     })
     .state('app.event', {
       url: '/event',
       views: {
         'menuContent': {
-          templateUrl: '../templates/event.html',
+          templateUrl: '../www/templates/event.html',
           controller: 'EventsController'
         }
-      },
-      authenticate: true,
+      }
+      // authenticate: true,
     })
     .state('app.events', {
       url: '/events',
       views: {
         'menuContent': {
-          templateUrl: '../templates/eventslist.html',
+          templateUrl: '../www/templates/eventslist.html',
           controller: 'EventsController'
         }
-      },
-      authenticate: true
+      }
+      // authenticate: true
     })
     .state('app.newevent', {
       url: '/newevent',
       views: {
         'menuContent': {
-          templateUrl: '../templates/newevent.html',
+          templateUrl: '../www/templates/newevent.html',
           controller: 'EventsController'
         }
       },
@@ -86,7 +88,7 @@ angular.module('headcount', [
       url: '/accounts',
       views: {
         'menuContent': {
-          templateUrl: '../templates/accounts.html',
+          templateUrl: '../www/templates/accounts.html',
           controller: 'AccountsController'
         }
       },
@@ -97,7 +99,9 @@ angular.module('headcount', [
     //   .primaryPalette('blue')
     //   .accentPalette('red');
     
-    $urlRouterProvider.otherwise('/signin');
+    
+
+    $urlRouterProvider.otherwise('/events');
 })
 .factory('EventsFactory', function ($rootScope) {
   var eventServices = {};

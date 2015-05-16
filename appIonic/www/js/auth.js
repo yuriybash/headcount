@@ -25,32 +25,52 @@ angular.module('headcount.auth', [])
 
   $scope.signin = function () {
 
+    console.log("signing in before POST request to auth/local");
+    var user = JSON.stringify($scope.user);
+
     return $http({
       method: 'POST',
       url: 'http://young-tundra-9275.herokuapp.com/auth/local',
-      data: $scope.user
+      data: user,
+      headers : {"Content-Type": 'application/json'}
     })
     .then(function (resp) {
+      
+      console.log("$window.sessionStorage: ", $window.sessionStorage);
+
       $window.sessionStorage.setItem('user', resp.config.data.username);
+
+      console.log("$window.location: ", $window.location)
+
       $window.location.href = "/";
+
     })
     .catch(function(error) {
+      console.log("error is signin: ", error);
+
       $window.alert("Incorrect login, please try again!");
     });
-  };
+  };  
 
   $scope.signup = function () {
 
     return $http({
       method: 'POST',
-      url: 'http://young-tundra-9275.herokuapp.com/auth/local-signup',
-      data: $scope.user
+      url: 'https://young-tundra-9275.herokuapp.com/auth/local-signup',
+      data: $scope.user,
+      headers : {"Content-Type": 'application/json'}
     })
     .then(function (resp) {
+        console.log("resp in auth signup: ", resp);
+
         $window.sessionStorage.setItem('user', resp.config.data.username);
+        console.log("$window.sesstionStorage: ", $window.sessionStorage);
+
         $window.location.href = "/";
     })
     .catch(function(error) {
+      console.log("error: ", error);
+      console.log("$window: ", $window);
       $window.alert("Username already exists, please try again!");
     });
   };
@@ -68,7 +88,7 @@ angular.module('headcount.auth', [])
     Auth.signout();
     return $http({
       method: 'GET',
-      url: 'http://young-tundra-9275.herokuapp.com/auth/logout'
+      url: 'https://young-tundra-9275.herokuapp.com/auth/logout'
     })
     .then(function(resp) {
       $window.alert("You've signed up for all of the things!!");
